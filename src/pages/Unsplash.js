@@ -3,22 +3,23 @@ import axios from 'axios';
 import {MdImageSearch} from 'react-icons/md';
 import {AiTwotoneHeart} from   'react-icons/ai';
 import {TiArrowLeftOutline, TiArrowRightOutline} from 'react-icons/ti';
-
+import PagesFunctions from '../components/PagesFunctions';
+import PhotosNotFound from '../components/PhotosNotFound'
+import Photo from '../components/Photo';
 
 function Unsplash() {
     const [photos, setPhotos] = useState([]);
-    const [photoInfo, setPhotoInfo] = useState([]);
+    const [photoInfo, setPhotoInfo] = useState('');
     const [image, setImage] = useState('');
     const [access_Key, setAccess_Key] = useState('')
     const [page, setPage] = useState(1);
+    const {pageTitle} = PagesFunctions()
 
-    useEffect(() => {
-        document.title = "Unsplash";
-    }, [])
+    useEffect (() => {
+        pageTitle('Unsplash');
+      }, []);
 
-    console.log(page)
-
-    const getPhotos = () => {
+    const getPhotos = () => { //TODO: GET PHOTOS WITH AXIOS
         if (page < 1) {
             setPage(1)
         }
@@ -31,19 +32,20 @@ function Unsplash() {
             })
     }
 
-    const searchPhotos = async (e) => {
+    const searchPhotos = async (e) => { //TODO: SEARCH PHOTOS
         e.preventDefault();
         getPhotos();
     }
 
-    const left = () => {
-        if (page > 1) {
-            setPage(page-1)
+    //! PAGINATOR FUNCTION
+    const left = () => { //TODO: LEFT 
+        if (page > 1) { 
+            setPage(Number(page)-1)
         }
         getPhotos();
     }
-    const right = () => {
-        setPage(page+1);
+    const right = () => { //TODO: RIGHT
+        setPage(Number(page)+1);
         getPhotos();
     }
 
@@ -60,7 +62,7 @@ function Unsplash() {
                 type="text" className='search__input'
                 value={image} 
                 onChange={(e) => setImage(e.target.value)}
-                placeholder='search image'
+                placeholder='what do you want?'
             />
             <input 
                 type='number' 
@@ -72,36 +74,28 @@ function Unsplash() {
         </form>
         <div className="page__filters"></div>
         <div className="page__photos">
-            {photos? (
+            {photos.length != 0 ? (
                 <div className="photos">
                     {photos.map(photo => 
-                        <div className="photo" key={photo.id}>
-                            <img src={photo.urls.regular} xalt={photo.description} />
-                            <div className="photo__info">
-                                <p>{photo.description}</p>
-                                <a className='link photo__link'>{photo.user.name}</a>
-                                <h3><AiTwotoneHeart/>{photo.likes}</h3>
-                            </div>
-                        </div>
+                        <Photo photo={photo} key={photo.id} />  
                     )}
                 </div>
             ): (
-                <div className="photos__not__found">
-                    <h2>Photos Not Found</h2>
-                    <p>Enter Another Request</p>
-                </div>
+            <PhotosNotFound/>
             )}
         </div>
         
         {photos.length != 0 ? (
             <div className="paginator">
             <div className="paginator__on__left">
-                <button 
-                    className="btn"
-                    onClick={left}
+                {page > 1? (
+                    <button 
+                        className="btn"
+                        onClick={left}
                     >
                         <TiArrowLeftOutline/>
-                </button>
+                    </button>
+                ): (<></>)}
             </div>
             <div className="paginator__on__right">
             <button 
@@ -109,7 +103,7 @@ function Unsplash() {
                 onClick={right}
             >
                 <TiArrowRightOutline/>
-                </button>
+            </button>
             </div>
         </div>
         ): (<></>)}

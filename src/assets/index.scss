@@ -35,12 +35,17 @@ header {
     padding: 0 10%;
     border-bottom: 2px solid $primary;
     margin-bottom: 1rem;
-}
-.header__menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    a {
+        h2 {
+            color: $primary;
+        }
+    }
+    .header__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
 }
 //TODO: LINK
 .link {
@@ -58,7 +63,7 @@ header {
         display: block;
         content: '';
         width: 130%;
-        height: 10px;
+        height: 50%;
         background-color: #FAAB78;
         top: 50%;
         z-index: -1;
@@ -243,4 +248,78 @@ header {
     width: 100%;
     padding: 0 5%;
     margin: 2% 10%
+}
+
+//! photos__not__found 
+.photos__not__found {
+    margin: 10% 0 0 0;
+    text-shadow: 
+        4px 0px 1px $red,
+        0px 4px 1px $orange,
+        0px -4px 1px $blue,
+        -4px 0px 1px $yellow;
+}
+
+.photo__url {
+    text-align: centet;
+    color: aliceblue;
+    &:hover {
+        color: $red
+    }
+}
+
+//! home
+.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5%;
+    &__right {
+        max-width: 70%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        .link {
+            align-items: start;
+            width: 100%;
+            font-size: 3rem;
+        }
+    }
+}
+//!instruction
+.instruction {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 70%;
+    margin: 2% 0;
+    img {
+        width: 100%;
+        height: 100%;
+        margin: 1% 0;
+    }
+}
+
+//!fullscreen
+.fullscreen {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    background-color: $white;
+    border: 2px solid $primary;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: .8rem;
+    &:hover{
+        background-color: $primary;
+        color: $white
+    }
+    &__icon {
+        font-size: 1.6rem;
+        font-weight: 900 !important;
+    }
 }
