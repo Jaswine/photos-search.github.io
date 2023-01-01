@@ -11,22 +11,10 @@ import NewApplication from '../assets/images/NewApplication.png';
 import UrApps from '../assets/images/UrApps.png';
 //! ICONST
 import {AiOutlineArrowDown} from 'react-icons/ai'; 
-import {BsArrowsFullscreen} from 'react-icons/bs'; 
-
-const fullscreen = () => {
-    if (document.documentElement.requestFullscreen()) {
-        document.exitFullscreen();
-    } else {
-        document.documentElement.requestFullscreen();
-    }
-}
 
 function Instruction() {
   return (
     <div className='page'>
-        <button className="fullscreen" onClick={fullscreen}>
-            <BsArrowsFullscreen className='fullscreen__icon'/>
-        </button>
         <h1>Instruction</h1>
         <div className="instruction">
             <h3 >Do u wanna know how to get this token?</h3>

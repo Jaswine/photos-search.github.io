@@ -23,7 +23,6 @@ function Pexels() {
         if (page < 1) {
             setPage(1)
         }
-        console.log(page)
         axios.get(`https://api.pexels.com/v1/search?query=${image}&per_page=${page}`, {
           headers: {
             'Authorization' : access_Key
@@ -31,16 +30,8 @@ function Pexels() {
         })
         .then(res => {
                 setPhotoInfo(res.data);
-                let photos =  res.data.photos;
-                // console.log(photos)
-                let all_photos = [];
-
-                for (let i = 0; i < photos.length; i++) {
-                  all_photos.push(photos[i])
-                  console.log(photos[i])
-                }
-                console.log(all_photos)
-                setPhotos(photos)
+                console.log(res.data.photos)
+                setPhotos(res.data.photos)
             })
     }
 

@@ -7,7 +7,7 @@ function NavBar() {
         <div className="header__menu">
             <a href='/unsplash' className="link">Unsplash</a>
             <a href='/pexels' className="link">Pexels</a>
-            {/* <a href='/pixebay' className="link">Pixebay</a> */}
+            <a href='/pixebay' className="link">Pixebay</a>
         </div>
     </header>
   )

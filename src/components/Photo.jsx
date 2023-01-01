@@ -1,7 +1,6 @@
 import React from 'react';
 import {AiTwotoneHeart} from   'react-icons/ai';
 
-
 function Photo({photo}) {
   return (
     <div className="photo">

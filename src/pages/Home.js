@@ -9,6 +9,7 @@ function Home() {
         <div className="home__right">
           <a href='/unsplash' className="link home__right__link">Unsplash</a>
             <a href='/pexels' className="link home__right__link">Pexels</a>
+            <a href='/pixebay' className="link home__right__link">Pixebay</a>
             <a href='/instructions' className="link home__right__link">Instruction</a>
         </div>
       </div>
